@@ -1,0 +1,163 @@
+@import url("https://use.typekit.net/hhe0xep.css");
+
+body {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+header {
+  max-width: 1300px;
+  margin: auto;
+}
+
+header h1 {
+  padding-bottom: 25px;
+  font-family: "fatfrank",sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+.caption {
+  padding: 0px 10px 10px 10px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+@media screen and (min-width: 800px) {
+
+  main {
+
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 65px;
+  }
+
+  #thumbs .caption {
+    display: none;
+  }
+
+  .imagejs {
+    width: 10%;
+    padding: 2px;
+
+  }
+  #stagejs {
+    display: block;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #stagejs img {
+    width: 100%;
+    padding: 0px;
+  }
+
+  #thumbs {
+    width: 100;   /*463px*/
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+
+
+  }
+
+  .thumb {
+    width: 100%; /*150px;*/
+  /*  height: 100%; 150px;*/
+
+    transition: opacity .3s;
+  }
+
+  .thumb:hover {
+    opacity: .5;
+  }
+
+}
+
+@media screen and (min-width: 1050px) {
+
+  #imagebucket {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 85%;
+    margin: auto;
+  }
+
+  img {
+    width: 300px;
+    padding: 0px 10px 0px 0px;
+
+  }
+
+  .image {
+    margin: auto;
+  }
+
+  .imagejs {
+    width: 30%;
+    padding: 2px;
+
+  }
+
+  #thumbs {
+    width: 30%;   /*463px*/
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+
+  }
+
+  #thumbs .caption {
+    display: none;
+  }
+
+  .thumb {
+    width: 100%; /*150px;*/
+  /*  height: 100%; 150px;*/
+
+    transition: opacity .3s;
+  }
+
+  .thumb:hover {
+    opacity: .5;
+  }
+
+  main {
+    max-width: 1300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 65px;
+  }
+
+  #stagejs {
+    display: inline-block;
+    width: 68%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #stagejs img {
+    width: 100%;
+    padding: 0px;
+    opacity: 1;
+  }
+
+
+
+}
