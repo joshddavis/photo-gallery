@@ -1,8 +1,8 @@
 const images = document.getElementsByClassName('image');
 
-//using these variables for the functions at the bottom
-var fadeo, fadei;
-var i = 1;
+//using these variables for the fade functions at the bottom
+var fade_out_from = 10;
+var fade_in_from = 0;
 
 //fill the stage with the first image in the list when the page loads
 document.getElementById('stage').innerHTML = images[0].children[0].outerHTML;
@@ -17,39 +17,43 @@ Array.from(images).forEach((item) => {
 
 //event listener for the thumbnail images
 var elems = document.getElementsByClassName('thumb');
-  for (var a = 0; a < elems.length; a++)  {
-
-    elems[a].addEventListener('click', (e) => {
-      //get the src of the clicked image
-      const newsrc = e.target.attributes[0].value;
-      //update the stage with the clicked source...will eventually replace this with the fade functions below
-      document.getElementById('stagejs').children[0].attributes[0].value = newsrc;
-
-  //this setInterval and the 2 functions below are how im trying update the stage with a fade effect
- //setInterval(fadeout(i), 2);
+for (var a = 0; a < elems.length; a++)  {
+  elems[a].addEventListener('click', (e) => {
+    //get the src of the clicked image
+    const newsrc = e.target.attributes[0].value;
+    //fade out the stage, update with the clicked image, fade back in
+    fadeout();
+    document.getElementById('stagejs').children[0].attributes[0].value = newsrc;
+    fadein();
 
   });
 
 }
 
-function fadeout(i) {
-    	if (i > 0) {
-    		document.getElementById('stagejs').children[0].style.opacity = parseFloat(i - .01).toFixed(2);
-        i = parseFloat(i - .01).toFixed(2);
-    		console.log(i);
-      } else {
-    		clearInterval();
-        document.getElementById('stagejs').children[0].attributes[0].value = newsrc;
-        fadei = setInterval(fadein(i), 2);
-      }
+function fadeout() {
+  var target = document.getElementById('stagejs');
+  var newSetting = fade_out_from / 10;
+  target.style.opacity = newSetting;
+  fade_out_from--;
+  if(fade_out_from == 0) {
+    target.style.opacity = 0;
+    clearTimeout(loopTimer);
+    fade_out_from = 10;
+    return false;
+}
+  var loopTimer = setTimeout('fadeout()', 25);
 }
 
-function fadein(i) {
-      if (i < 1) {
-        document.getElementById('stagejs').children[0].style.opacity = parseFloat(i + .01).toFixed(2);
-        i = parseFloat(i + .01).toFixed(2);
-        console.log(i);
-      } else {
-        clearInterval(fadei);
-      }
+function fadein() {
+  var target = document.getElementById('stagejs');
+  var newSetting = fade_in_from / 10;
+  target.style.opacity = newSetting;
+  fade_in_from++;
+  if(fade_in_from == 10) {
+    target.style.opacity = 1;
+    clearTimeout(loopTimer);
+    fade_in_from = 0;
+    return false;
+}
+  var loopTimer = setTimeout('fadein()', 25);
 }
